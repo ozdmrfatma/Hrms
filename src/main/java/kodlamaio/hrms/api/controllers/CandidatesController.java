@@ -1,0 +1,23 @@
+package kodlamaio.hrms.api.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import kodlamaio.hrms.business.abstracts.CandidateService;
+
+@RestController
+@RequestMapping("/api/candidates")
+public class CandidatesController {
+		
+	/*private CandidateService candidateService;
+	
+	@Autowired
+	public CandidatesController(CandidateService candidateService){
+		this.candidateService=candidateService;
+	}
+	
+	*/
+	
+	
+}
