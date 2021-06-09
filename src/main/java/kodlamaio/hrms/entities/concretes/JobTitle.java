@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 
 @Entity //entity
 @Table(name="job_titles")
-
 @NoArgsConstructor //parametresiz conctructorları ayarlar
 @AllArgsConstructor //allparameter conctructor
 
@@ -28,8 +27,6 @@ public class JobTitle  {
 	
 	@Column(name="title")
 	private String title;
-	
-	
 	
 	
 }

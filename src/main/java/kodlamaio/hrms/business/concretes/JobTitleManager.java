@@ -29,4 +29,9 @@ public class JobTitleManager implements JobTitleService {
 		return new SuccessDataResult<List<JobTitle>>(this.jobPositionDao.findAll(), "data listelendi");
 	}
 
+	@Override
+	public DataResult<JobTitle> getById(int id) {
+		return new SuccessDataResult<JobTitle>(this.jobPositionDao.findById(id).get());
+	}
+
 }

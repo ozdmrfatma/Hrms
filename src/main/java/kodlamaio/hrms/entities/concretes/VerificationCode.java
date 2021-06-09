@@ -1,5 +1,8 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,35 +11,30 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-
 @Entity
-@Table(name="users")
-@Inheritance(strategy = InheritanceType.JOINED) // inherit edildigi sinifa ozelliklerini aktarir
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class User {
+@Table(name="verification_codes")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class VerificationCode {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Email
-	@Column(name="email")
-	private String email;
+	@Column(name="code")
+	private String code;
 	
-	@Column(name="password")
-	private String password;
+	@Column(name="is_verified")
+	private boolean isVerified;
 	
+	@Column(name="verified_date")
+	private LocalDate verifiedDate;
 }
-
-
-//tabloları olustur controller ' ı yap 8. gün req 4-5-6
-//
