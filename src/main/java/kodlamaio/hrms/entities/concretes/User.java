@@ -38,5 +38,3 @@ public class User {
 }
 
 
-//tabloları olustur controller ' ı yap 8. gün req 4-5-6
-//

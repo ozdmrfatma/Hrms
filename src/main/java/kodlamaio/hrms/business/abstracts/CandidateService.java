@@ -10,3 +10,5 @@ public interface CandidateService {
 	Result add(Candidate candidate);
 	DataResult<List<Candidate>> getAll();
 }
+
+	

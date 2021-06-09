@@ -1,6 +1,6 @@
 package kodlamaio.hrms.core.utilities.results;
 
-public class Result {  //syout class gorevi goruyor.
+public class Result {  //soyut class gorevi goruyor.
 	
 	private boolean success;
 	private String message;
