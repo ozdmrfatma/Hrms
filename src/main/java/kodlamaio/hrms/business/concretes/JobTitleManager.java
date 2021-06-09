@@ -29,21 +29,21 @@ public class JobTitleManager implements JobTitleService {
 	
 	@Override
 	public DataResult<List<JobTitle>> getAll() {
-		return new SuccessDataResult<List<JobTitle>>(this.jobTitleDao.findAll(), "İş pozisyonları listelendi");
+		return new SuccessDataResult<List<JobTitle>>(this.jobTitleDao.findAll(), " İş pozisyonları listelendi");
 	}
-
 
 
 	@Override
 	public Result add(JobTitle jobTitle) {
 		
-		JobTitle result=jobTitleDao.getByTitle(jobTitle.getTitle());  //
+		JobTitle result=this.jobTitleDao.getByTitle(jobTitle.getTitle());  //tekrar eden jobtitle için kontrol
 		
-		if(result==null) {
-			new ErrorResult("Tekrar eden iş pozisyonu !");
+		if(!(result==null)) {
+			return new ErrorResult("Tekrar eden iş pozisyonu !");
 		}
-			jobTitleDao.save(jobTitle);
-			return new SuccessResult(jobTitle.getTitle()+"iş pozisyonu eklendi");
+		
+		jobTitleDao.save(jobTitle);
+		return new SuccessResult(jobTitle.getTitle()+" iş pozisyonu eklendi ");
 			
 	}
 
