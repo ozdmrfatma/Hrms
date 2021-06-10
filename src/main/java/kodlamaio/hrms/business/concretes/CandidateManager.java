@@ -3,7 +3,6 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
@@ -23,26 +22,20 @@ public class CandidateManager implements CandidateService {
 	private UserCheckService checkService;
 	
 	@Autowired
-	@Lazy
 	public CandidateManager(CandidateDao candidateDao,UserCheckService checkService) {
 		this.candidateDao=candidateDao;
 		this.checkService=checkService;
 	}
 	
-	public boolean checkIfRealPerson(Candidate candidate) {
-			if(!(checkService.checkIfRealPerson(Long.parseLong(candidate.getIdentityNumber()), candidate.getFirstName(), candidate.getLastName(), candidate.getDateOfBirth()))) {
-				return false;
-			}
-		return true;
-	}
-
 	
 	@Override
 	public Result add(Candidate candidate) {
 		
-		if(candidate.getFirstName()==null||candidate.getLastName()==null||candidate.getDateOfBirth()==null||candidate.getIdentityNumber()==null||candidate.getEmail()==null||candidate.getPassword()==null){
-			return new ErrorResult("Lütfen tüm alanları doldurunuz.");
-		}
+		//bu kontrol çalışmıyor
+//		if(candidate.getFirstName()==null||candidate.getLastName()==null||candidate.getDateOfBirth()==null||candidate.getIdentityNumber()==null||candidate.getEmail()==null||candidate.getPassword()==null){
+//			return new ErrorResult("Lütfen tüm alanları doldurunuz.");
+//		}
+		
 		
 		if(!(checkIfRealPerson(candidate))){
 			return new ErrorResult("Candidate doğrulama başarısız");
@@ -65,5 +58,11 @@ public class CandidateManager implements CandidateService {
 		return new SuccessDataResult<List<Candidate>>(candidateDao.findAll(),"İş arayanlar Listelendi");
 
 	}
+	public boolean checkIfRealPerson(Candidate candidate) {
+		if(!(checkService.checkIfRealPerson(Long.parseLong(candidate.getIdentityNumber()), candidate.getFirstName(), candidate.getLastName(), candidate.getDateOfBirth()))) {
+			return false;
+		}
+	return true;
+}
 	
 }
