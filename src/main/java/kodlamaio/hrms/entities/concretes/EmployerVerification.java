@@ -2,6 +2,8 @@ package kodlamaio.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -17,9 +19,19 @@ import lombok.EqualsAndHashCode;
 
 public class EmployerVerification extends VerificationCode{
 	
-	@Column(name="employer_id")
-	private int employerId;
+//
+//	@Column(name="employer_id")
+//	private int employerId;
+//	
+//	@Column(name="employee_confirm_id")
+//	private int employeeConfirmId;
 	
-	@Column(name="employee_confirm_id")
-	private int employeeConfirmId;
+	@ManyToOne()
+	@JoinColumn(name="employer_id")
+	private Employer employer;
+	
+	@ManyToOne()
+	@JoinColumn(name="employee_confirm_id")
+	private EmployeeConfirm employeeConfirm;
+	
 }

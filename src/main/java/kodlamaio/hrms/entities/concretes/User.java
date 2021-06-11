@@ -9,6 +9,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +30,8 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
+	@NotBlank
+	@NotNull
 	@Email
 	@Column(name="email")
 	private String email;

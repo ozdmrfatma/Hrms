@@ -31,10 +31,10 @@ public class CandidateManager implements CandidateService {
 	@Override
 	public Result add(Candidate candidate) {
 		
-		//bu kontrol çalışmıyor
-//		if(candidate.getFirstName()==null||candidate.getLastName()==null||candidate.getDateOfBirth()==null||candidate.getIdentityNumber()==null||candidate.getEmail()==null||candidate.getPassword()==null){
-//			return new ErrorResult("Lütfen tüm alanları doldurunuz.");
-//		}
+		
+		if(!(candidate.getFirstName().isEmpty()&&candidate.getLastName()==null&&candidate.getDateOfBirth()==null&&candidate.getIdentityNumber()==null&&candidate.getEmail()==null&&candidate.getPassword()==null)){
+			return new ErrorResult("Lütfen tüm alanları doldurunuz.");
+		}
 		
 		
 		if(!(checkIfRealPerson(candidate))){
@@ -62,7 +62,9 @@ public class CandidateManager implements CandidateService {
 		if(!(checkService.checkIfRealPerson(Long.parseLong(candidate.getIdentityNumber()), candidate.getFirstName(), candidate.getLastName(), candidate.getDateOfBirth()))) {
 			return false;
 		}
-	return true;
+			return true;
+		
+	
 }
 	
 }

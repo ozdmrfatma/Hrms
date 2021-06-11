@@ -49,7 +49,7 @@ public class JobTitleManager implements JobTitleService {
 
 	@Override
 	public DataResult<JobTitle> getJobByTitle(String title) {
-		return new SuccessDataResult<JobTitle>(this.jobTitleDao.getByTitle(title));
+		return new SuccessDataResult<JobTitle>(this.jobTitleDao.getByTitle(title),title+" Getirildi");
 	}
 
 	
