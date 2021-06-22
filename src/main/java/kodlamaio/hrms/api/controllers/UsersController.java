@@ -9,33 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.User;
 
 @RestController
-@RequestMapping("/api/candidates")
-public class CandidatesController {
-
-	private CandidateService candidateService;
-
-	@Autowired
-	public CandidatesController(CandidateService candidateService) {	// bu interface'i implemente eden sınıfları bizim için new'liyor.
+@RequestMapping("/api/users")
+public class UsersController {
 		
-		this.candidateService = candidateService;
+	private UserService userService;
+	
+	@Autowired
+	public UsersController(UserService userService) {
+		this.userService=userService;
 	}
 	
+	
 	@GetMapping("/getall")
-	public DataResult<List<Candidate>> getAll(){
-		return candidateService.getAll();
+	public DataResult<List<User>>getAll(){
+		return this.userService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Candidate candidate) {
-		return candidateService.add(candidate);
+	public Result add(@RequestBody User user) {
+		return this.userService.add(user);
 	}
-	
 }
-
-

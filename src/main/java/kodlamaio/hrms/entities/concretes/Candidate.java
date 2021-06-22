@@ -27,19 +27,25 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @PrimaryKeyJoinColumn(name = "user_id",referencedColumnName = "id")
 public class Candidate extends User{
-
+	
+	@NotBlank(message = "İsim alanı boş bırakılamaz.")
+	@NotNull
 	@Column(name="first_name")
 	private String firstName;
 	
+	@NotBlank(message = "Soyad alanı boş bırakılamaz.")
+	@NotNull
 	@Column(name="last_name")
 	private String lastName;
 	
-	@NotBlank
+	@NotBlank(message = "TC alanı boş bırakılamaz.")
 	@NotNull
 	@Size(min =11 ,max=11)
 	@Column(name="identity_number")
 	private String identityNumber;
 	
+	@NotBlank(message = "Doğum tarihi boş bırakılamaz.")
+	@NotNull
 	@Column(name="date_of_birth")
 	private LocalDate dateOfBirth;
 	

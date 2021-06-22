@@ -2,6 +2,7 @@ package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
@@ -17,20 +18,22 @@ public class EmployerManager implements EmployerService{
 
 	private EmployerDao employerDao;
 	
+	@Autowired
 	public EmployerManager(EmployerDao employerDao) {
 		this.employerDao=employerDao;
 	}
 	
 	@Override
 	public DataResult<List<Employer>> getAll() {
-		return new SuccessDataResult<List<Employer>>(employerDao.findAll(),"Employers listelendi.");
+		return new SuccessDataResult<List<Employer>>(employerDao.findAll(),"İş verenler listelendi.");
 	}
 
-	@Override
+	@Override  
 	public Result add(Employer employer) {
+		
 		employerDao.save(employer);
 		return new SuccessResult(employer.getCompanyName()+"  eklendi.");
 	}
-
+	
 	
 }

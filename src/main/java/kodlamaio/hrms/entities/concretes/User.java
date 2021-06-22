@@ -30,12 +30,14 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
-	@NotBlank
+	@NotBlank(message = "Email alanı boş bırakılamaz.")
 	@NotNull
 	@Email
 	@Column(name="email")
 	private String email;
 	
+	@NotBlank(message = "Şifre alanı boş bırakılamaz.")
+	@NotNull
 	@Column(name="password")
 	private String password;
 	

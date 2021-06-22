@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +27,8 @@ public class JobTitle  {
 	@Column(name="id")
 	private int id;
 	
+	@NotBlank(message = "İş pozisyonu boş bırakılamaz.")
+	@NotNull
 	@Column(name="title")
 	private String title;
 	

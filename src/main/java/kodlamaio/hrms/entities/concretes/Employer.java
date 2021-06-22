@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,13 +26,18 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name = "user_id",referencedColumnName = "id")
 public class Employer extends User{
 	
-	
+	@NotBlank(message = "Şirket adı boş bırakılamaz.")
+	@NotNull
 	@Column(name="company_name")
 	private String companyName;
 	
+	@NotBlank(message = "Web adresi boş bırakılamaz.")
+	@NotNull
 	@Column(name="web_address")
 	private String webAddress;
 	
+	@NotBlank(message = "Telefon numarası boş bırakılamaz")
+	@NotNull
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
